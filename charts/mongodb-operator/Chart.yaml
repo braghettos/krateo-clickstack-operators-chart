@@ -1,21 +1,25 @@
 apiVersion: v2
 name: mongodb-operator
 description: >-
-  MongoDB Community Kubernetes operator (controller + mongodbcommunity.mongodb.com CRD) for the
-  Krateo ClickStack observability data layer, packaged as a Krateo composition. Thin
-  dependency-WRAPPER over the UNFORKED upstream MongoDB community-operator chart (which bundles
-  the community-operator-crds subchart). The CRD ships in templates/, so core-provider applies
-  it on render and the composition's helm release deletes it cleanly on teardown. No sample
-  MongoDBCommunity CR is created (createResource defaults false). The installer wires
-  `krateo-clickstack` to depend on this composition, so the mongodbcommunity CRD is established
-  AND the operator is running before any MongoDBCommunity CR renders. No fork of upstream.
+  MongoDB Community Kubernetes operator packaged as a Krateo composition for the ClickStack data layer.
 type: application
 # version = this Krateo wrapper's own release stream. appVersion = the upstream
 # community-operator version actually deployed.
 version: 0.1.0
 appVersion: "0.13.0"
 home: https://krateo.io
-icon: https://github.com/krateoplatformops/krateo/blob/main/docs/media/logo.svg
+icon: https://raw.githubusercontent.com/krateoplatformops/krateo/main/docs/media/logo.svg
+keywords:
+  - mongodb
+  - database
+  - operator
+  - krateo
+  - clickstack
+annotations:
+  krateo.io/category: database
+  krateo.io/maturity: beta
+  krateo.io/display-name: MongoDB Operator
+  krateoSupportedVersion: ">= 2.5.1"
 sources:
   - https://github.com/mongodb/mongodb-kubernetes-operator
   - https://github.com/braghettos/krateo-clickstack-operators-chart
